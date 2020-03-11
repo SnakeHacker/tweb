@@ -1,0 +1,14 @@
+version: '3.7'
+
+services:
+  grandet_db:
+    image: postgres:11.1
+    environment:
+      POSTGRES_PASSWORD: tweb_test
+      POSTGRES_USER: tweb_test
+      POSTGRES_DB: tweb_db
+    container_name: tweb_db
+    ports:
+      - 5432:5432
+    volumes:
+      - /tmp/tweb_db/pgdata:/var/lib/postgresql/data

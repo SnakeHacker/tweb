@@ -1,0 +1,16 @@
+# add endpoints of the scholar frontend to avoid CROS issue.
+cros_allow_origins: [http://localhost:3000]
+web:
+    port: 8888
+    write_timeout_sec: 10
+    read_timeout_sec: 10
+    read_header_timeout_sec: 10
+    idle_timeout_sec: 10
+    shutdown_wait_sec: 10
+db:
+    host: localhost
+    port: 5432
+    username: tweb_test
+    password: tweb_test
+    database: tweb_db
+    reconnect_sec: 3
