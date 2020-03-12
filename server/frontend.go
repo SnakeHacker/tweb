@@ -9,11 +9,11 @@ import (
 )
 
 func (s *Server) handleFrontend(router *mux.Router) *mux.Router {
-	router.PathPrefix(`/view/`).HandlerFunc(s.frontendAnno).Methods("GET")
+	router.PathPrefix(`/view/`).HandlerFunc(s.frontend).Methods("GET")
 	return router
 }
 
-func (s *Server) frontendAnno(w http.ResponseWriter, r *http.Request) {
+func (s *Server) frontend(w http.ResponseWriter, r *http.Request) {
 	html, err := s.Frontend.FindString("index.html")
 	if err != nil {
 		glog.Error(err)
