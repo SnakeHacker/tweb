@@ -1,5 +1,6 @@
-# add endpoints of the scholar frontend to avoid CROS issue.
-cros_allow_origins: [http://localhost:3000]
+storage_dir: /tmp/tweb/tweb_storage
+# add endpoints of the tweb frontend to avoid CROS issue.
+cros_allow_origins: [http://localhost:3030]
 web:
     port: 8888
     write_timeout_sec: 10

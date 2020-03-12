@@ -8,6 +8,7 @@ import (
 
 	"github.com/SnakeHacker/tweb/common/utils/web"
 	m "github.com/SnakeHacker/tweb/server/model"
+	"github.com/SnakeHacker/tweb/server/proto"
 	"github.com/golang/glog"
 )
 
@@ -70,9 +71,12 @@ func (s *Server) authMiddleware(next http.Handler) http.Handler {
 	})
 }
 
-func makeSession(user m.User, token string) *m.Session {
-	return &m.Session{
-		Token:    token,
-		Username: user.Username,
+func makeSession(user m.User, token string) *proto.Session {
+	return &proto.Session{
+		Token: token,
+		User: &proto.User{
+			Role:     m.UserRoleLUT[user.Role],
+			Nickname: user.Username,
+		},
 	}
 }

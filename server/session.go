@@ -7,11 +7,11 @@ import (
 
 	"github.com/jinzhu/gorm"
 
-	"github.com/SnakeHacker/tweb/common"
 	"github.com/SnakeHacker/tweb/common/utils/random"
 	"github.com/SnakeHacker/tweb/common/utils/web"
 	"github.com/SnakeHacker/tweb/common/utils/werkzeug"
 	m "github.com/SnakeHacker/tweb/server/model"
+	"github.com/SnakeHacker/tweb/server/proto"
 	"github.com/golang/glog"
 	"github.com/gorilla/mux"
 )
@@ -26,21 +26,9 @@ func (s *Server) handleSession(router *mux.Router) *mux.Router {
 	return router
 }
 
-// LoginRequest ...
-type LoginRequest struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
-// LoginResponse ...
-type LoginResponse struct {
-	Error   string     `json:"error"`
-	Session *m.Session `json:"session"`
-}
-
 // Login ...
 func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
-	var req LoginRequest
+	var req proto.LoginRequest
 	err := web.ReadJSONBody(r.Body, &req)
 	if err != nil {
 		glog.Error(err)
@@ -65,8 +53,8 @@ func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
 	err = s.DB.Where("username = ?", req.Username).Find(&user).Error
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
-			resp := LoginResponse{
-				Error: common.ErrorInvalidUsernameOrPassowrd.Error(),
+			resp := proto.LoginResponse{
+				Error: proto.Error_INVALID_USERNAME_OR_PASSWORD,
 			}
 			web.RespondJSON(w, &resp)
 			return
@@ -80,8 +68,8 @@ func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
 	correctPassword := werkzeug.CheckPasswordHash(req.Password, user.PasswordHash)
 	if !correctPassword {
 		// password incorrect
-		resp := LoginResponse{
-			Error: common.ErrorInvalidUsernameOrPassowrd.Error(),
+		resp := proto.LoginResponse{
+			Error: proto.Error_INVALID_USERNAME_OR_PASSWORD,
 		}
 		web.RespondJSON(w, &resp)
 		return
@@ -101,7 +89,7 @@ func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// only return limited information about the user to frontend
-	resp := LoginResponse{
+	resp := proto.LoginResponse{
 		Session: makeSession(user, sess.Token),
 	}
 	web.RespondJSON(w, &resp)
@@ -110,7 +98,7 @@ func (s *Server) Login(w http.ResponseWriter, r *http.Request) {
 
 // Logout ...
 func (s *Server) Logout(w http.ResponseWriter, r *http.Request) {
-	sess, ok := r.Context().Value(ctxSession).(m.Session)
+	sess, ok := r.Context().Value(ctxSession).(proto.Session)
 	if !ok {
 		web.Unauthorized(w)
 		return
