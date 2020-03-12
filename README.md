@@ -2,7 +2,7 @@
 程序化A股交易 WebUI
 
 # 环境
-- Golang 1.11.5
+- Golang 1.13.8
 - Yarn 1.22.4
 - Docker 18.09.2
 - Docker-compose 1.23.2
@@ -13,6 +13,9 @@ cd tweb
 
 # 启动数据库
 make up
+
+# 下载golang 第三方包
+go mod download
 
 # 启动后端
 make run
