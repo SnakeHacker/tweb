@@ -10,13 +10,14 @@
 # 快速开始
 ```
 cd tweb
+
 # 启动数据库
 make up
 
 # 启动后端
 make run
 
-# 首次执行请先创建用户
+# 首次执行请先创建管理员账号，账号密码自行修改Makefile 
 make create_admin
 
 # 启动前端
@@ -29,6 +30,6 @@ make install
 make run
 ```
 
-在浏览器中输入 `http://localhost:3030/view` 访问  
+在浏览器中输入 `http://localhost:3030/view/` 访问  
 
 TODO (mickey)
