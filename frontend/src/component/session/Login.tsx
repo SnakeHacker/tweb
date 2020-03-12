@@ -14,7 +14,7 @@ class LoginPage extends React.Component<{}, {}> {
         return (
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh'}}>
                 <Particles width={"100vh"} height={"100vh"} className='particles' params={particle_params}/>
-                <Title className="title" style={{marginBottom: '64px'}}>{intl.get('login')}</Title>
+                <Title className="title" style={{marginBottom: '64px'}}>{intl.get('tweb')}</Title>
                 <LoginForm />
             </div>
         )
