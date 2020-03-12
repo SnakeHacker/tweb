@@ -33,7 +33,7 @@ make install
 make run
 ```
 
-在浏览器中输入 `http://localhost:3030/view/` 访问  
+在浏览器中输入 [`http://localhost:3030/view/`](http://localhost:3030/view/) 访问  
 [![8mY5GD.png](https://s1.ax1x.com/2020/03/12/8mY5GD.png)](https://imgchr.com/i/8mY5GD)
 
 # 相关项目
