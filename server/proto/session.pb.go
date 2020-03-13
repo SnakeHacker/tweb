@@ -239,7 +239,9 @@ func init() {
 	proto.RegisterType((*LogoutResponse)(nil), "session.LogoutResponse")
 }
 
-func init() { proto.RegisterFile("session.proto", fileDescriptor_3a6be1b361fa6f14) }
+func init() {
+	proto.RegisterFile("session.proto", fileDescriptor_3a6be1b361fa6f14)
+}
 
 var fileDescriptor_3a6be1b361fa6f14 = []byte{
 	// 250 bytes of a gzipped FileDescriptorProto

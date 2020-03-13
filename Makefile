@@ -31,5 +31,8 @@ clean:
 build_image:
 	docker build -f Dockerfile -t mickeyzhoudocker/tweb:latest .
 
+build_prod_image:
+	docker build -f prod.Dockerfile -t mickeyzhoudocker/tweb_prod:latest .
+
 build_base_image:
 	docker build -f devel.Dockerfile -t mickeyzhoudocker/devel:latest .

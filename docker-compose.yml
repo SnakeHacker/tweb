@@ -21,4 +21,5 @@ services:
       - grandet_db
     restart: always
     volumes:
-      - ./conf-docker.yaml:/conf.yaml
+      - ./:/go/src/github.com/SnakeHacker/tweb
+

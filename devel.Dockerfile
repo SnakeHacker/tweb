@@ -20,7 +20,8 @@ RUN rm -rf /var/lib/apt/lists/*
 # Install Golang
 ENV GO_VERSION 1.13.8
 RUN wget https://storage.googleapis.com/golang/go${GO_VERSION}.linux-amd64.tar.gz
-RUN tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz && \
+	rm go${GO_VERSION}.linux-amd64.tar.gz
 ENV PATH /usr/local/go/bin:$PATH
 
 RUN mkdir -p /go/src /go/bin && chmod -R 777 /go
@@ -38,7 +39,8 @@ RUN go mod download
 # refer to https://github.com/golang/protobuf
 ARG PROTOBUF_VERSION=3.6.1
 RUN wget https://github.com/protocolbuffers/protobuf/releases/download/v${PROTOBUF_VERSION}/protoc-${PROTOBUF_VERSION}-linux-x86_64.zip
-RUN unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3
+RUN unzip protoc-${PROTOBUF_VERSION}-linux-x86_64.zip -d protoc3 && \
+	rm protoc-${PROTOBUF_VERSION}-linux-x86_64.zip
 RUN mv protoc3/bin/* /usr/local/bin/ && mv protoc3/include/* /usr/local/include/
 
 # Install GoLang proto gen
