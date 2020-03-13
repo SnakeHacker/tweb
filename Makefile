@@ -17,6 +17,9 @@ run:
 run_docker:
 	docker-compose -f docker-compose.yml up -d
 
+run_docker_prod:
+	docker-compose -f docker-compose-prod.yml up -d
+
 build_linux: proto
 	cd frontend && make build
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 packr2 build -o server main/main.go

@@ -8,8 +8,16 @@
 - Docker-compose 1.23.2
 
 # 快速开始
-Tweb支持两种启动方式
+Tweb支持3种启动方式
 * ### 1. Docker启动
+    请先熟读[`conf-docker.yaml`](conf-docker.yaml)配置
+    ```
+    cd tweb
+    make run_docker_prod
+    ```
+    在浏览器中输入 [`http://localhost:8888`](http://localhost:8888) 访问  
+
+* ### 2. 开发模式，通过Docker 编译代码
     请先熟读[`conf-docker.yaml`](conf-docker.yaml)配置
     ```
     cd tweb
@@ -17,7 +25,7 @@ Tweb支持两种启动方式
     ```
     在浏览器中输入 [`http://localhost:8888`](http://localhost:8888) 访问  
 
-* ### 2. 开发环境启动
+* ### 3. 开发模式，本地启动
     请先熟读[`conf.yaml`](conf.yaml)配置
     ```
     cd tweb
