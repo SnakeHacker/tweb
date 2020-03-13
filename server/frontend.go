@@ -9,7 +9,7 @@ import (
 )
 
 func (s *Server) handleFrontend(router *mux.Router) *mux.Router {
-	router.PathPrefix(`/view/`).HandlerFunc(s.frontend).Methods("GET")
+	router.PathPrefix(`/`).HandlerFunc(s.frontend).Methods("GET")
 	return router
 }
 

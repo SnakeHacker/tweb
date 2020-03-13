@@ -12,3 +12,13 @@ services:
       - 5432:5432
     volumes:
       - /tmp/tweb_db/pgdata:/var/lib/postgresql/data
+  tweb:
+    image: mickeyzhoudocker/tweb:latest
+    container_name: tweb_app
+    ports:
+      - 8888:8888
+    depends_on: 
+      - grandet_db
+    restart: always
+    volumes:
+      - ./conf-docker.yaml:/conf.yaml

@@ -57,6 +57,14 @@ func New(conf Conf, frontend *packr.Box) (s *Server, err error) {
 		}
 	}
 
+	// Create admin
+	if conf.CreateAdmin {
+		if err = s.CreateUser(conf.Admin.Username, conf.Admin.Password, m.RoleAdmin); err != nil {
+			glog.Error(err)
+			return
+		}
+	}
+
 	// setup router
 	s.setupRouter()
 

@@ -1,1 +1,1 @@
-export const URLRoot = '/view'
+export const URLRoot = '/'

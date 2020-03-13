@@ -1,7 +1,6 @@
 storage_dir: /tmp/tweb/tweb_storage
 # add endpoints of the tweb frontend to avoid CROS issue.
 cros_allow_origins: [http://localhost:3030]
-# Web配置
 web:
     port: 8888
     write_timeout_sec: 10
@@ -9,19 +8,15 @@ web:
     read_header_timeout_sec: 10
     idle_timeout_sec: 10
     shutdown_wait_sec: 10
-# 数据库配置
 db:
-    host: localhost
+    host: grandet_db
     port: 5432
     username: tweb_test
     password: tweb_test
     database: tweb_db
     reconnect_sec: 3
-    # 是否初始化数据库表
     reset: true
-# 是否创建超管账号
 create_admin: true
-# 超管账号配置
 admin:
     username: admin
     password: admin

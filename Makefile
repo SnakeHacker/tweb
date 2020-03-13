@@ -12,7 +12,7 @@ LDFLAGS="\
 "
 
 up:
-	docker-compose -f docker-compose.yml up -d
+	docker-compose -f docker-compose.yml up -d grandet_db
 
 down:
 	docker-compose -f docker-compose.yml down
@@ -23,8 +23,8 @@ proto:
 run:
 	go run main/main.go -c=conf.yaml
 
-create_admin:
-	go run cmd/user/main.go -c=conf.yaml -username=admin -password=admin -role=administrator
+run_docker:
+	docker-compose -f docker-compose.yml up -d
 
 build_linux: proto
 	cd frontend && make build
@@ -33,3 +33,6 @@ build_linux: proto
 build_darwin: proto
 	cd frontend && make build
 	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 packr2 build -ldflags $(LDFLAGS) -o server main/main.go
+
+build_docker: build_linux
+	docker build -f Dockerfile -t mickeyzhoudocker/tweb:latest .

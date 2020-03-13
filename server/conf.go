@@ -21,6 +21,14 @@ type Conf struct {
 		IdleTimeoutInSec  time.Duration `yaml:"idle_timeout_sec"`
 		ShutdownWaitInSec time.Duration `yaml:"shutdown_wait_sec"`
 	} `yaml:"web"`
+	CreateAdmin bool  `yaml:"create_admin"`
+	Admin       Admin `yaml:"admin"`
+}
+
+// Admin ...
+type Admin struct {
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
 }
 
 // LoadConf load config from yaml
