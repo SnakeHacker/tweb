@@ -1,15 +1,6 @@
-.PHONY: proto build_linux build_darwin
+.PHONY: proto build_linux build_darwin clean
 
 CONF=$(shell pwd)/conf.yaml
-GOPKG=github.com/SnakeHacker/tweb
-DEV_LDFLAGS="\
-	-X $(GOPKG)/server.buildGitCommitHash=$(shell git rev-parse --short HEAD) \
-	-X $(GOPKG)/server.buildGitCommitTime=$(shell git log -1 --format=%cd --date=iso-strict) \
-"
-LDFLAGS="\
-	-X $(GOPKG)/server.buildGitCommitHash=$(shell git rev-parse --short HEAD) \
-	-X $(GOPKG)/server.buildGitCommitTime=$(shell git log -1 --format=%cd --date=iso-strict) \
-"
 
 up:
 	docker-compose -f docker-compose.yml up -d grandet_db
@@ -28,11 +19,17 @@ run_docker:
 
 build_linux: proto
 	cd frontend && make build
-	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 packr2 build -ldflags $(LDFLAGS) -o server main/main.go
+	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 packr2 build -o server main/main.go
 
 build_darwin: proto
 	cd frontend && make build
-	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 packr2 build -ldflags $(LDFLAGS) -o server main/main.go
+	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 packr2 build -o server main/main.go
 
-build_docker: build_linux
+clean:
+	cd main && packr2 clean
+
+build_image:
 	docker build -f Dockerfile -t mickeyzhoudocker/tweb:latest .
+
+build_base_image:
+	docker build -f devel.Dockerfile -t mickeyzhoudocker/devel:latest .
