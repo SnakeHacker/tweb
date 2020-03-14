@@ -1,5 +1,6 @@
 import Management from 'components/management/Management';
 import Dashboard from 'components/dashboard/Dashboard';
+import Account from 'components/account/Account';
 
 const routes = [
     {
@@ -13,6 +14,10 @@ const routes = [
     {
       path: '/app/management',
       component: Management,
+    },
+    {
+      path: '/app/management/account',
+      component: Account
     }
     
   ];

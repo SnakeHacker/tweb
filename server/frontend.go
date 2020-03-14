@@ -8,9 +8,8 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func (s *Server) handleFrontend(router *mux.Router) *mux.Router {
+func (s *Server) handleFrontend(router *mux.Router) {
 	router.PathPrefix(`/`).HandlerFunc(s.frontend).Methods("GET")
-	return router
 }
 
 func (s *Server) frontend(w http.ResponseWriter, r *http.Request) {

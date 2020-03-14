@@ -32,7 +32,9 @@ export const SendRequest = async <Resp extends HTTPResponse>(method: Method, url
     if (data) {
         if (method === Method.GET) {
             const params = new URLSearchParams(data).toString()
-            url += '?' + params
+            if (params){
+                url += '?' + params
+            }
         } else {
             body = JSON.stringify(data);
         }

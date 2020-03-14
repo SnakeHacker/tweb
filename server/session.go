@@ -16,14 +16,12 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func (s *Server) handleSessionPublic(router *mux.Router) *mux.Router {
+func (s *Server) handleSessionPublic(router *mux.Router) {
 	router.HandleFunc(`/sessions/`, s.Login).Methods("POST")
-	return router
 }
 
-func (s *Server) handleSession(router *mux.Router) *mux.Router {
+func (s *Server) handleSession(router *mux.Router) {
 	router.HandleFunc(`/sessions/`, s.Logout).Methods("DELETE")
-	return router
 }
 
 // Login ...

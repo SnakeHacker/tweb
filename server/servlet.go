@@ -22,7 +22,7 @@ const publicURLPrefix = "/public/"
 
 // Server ...
 type Server struct {
-	HttpHandler http.Handler
+	HTTPHandler http.Handler
 	Frontend    *packr.Box
 	Conf        Conf
 	DB          *gorm.DB
@@ -79,6 +79,17 @@ func (s *Server) setupRouter() {
 	root.NotFoundHandler = &notFoundHandler{}
 	root.MethodNotAllowedHandler = &methodNotAllowedHandler{}
 
+	// APIs not requiring auth
+	s.handlePing(root)
+	s.handleSessionPublic(root)
+
+	// APIs requiring auth
+	authedRouter := root.NewRoute().Subrouter()
+	authedRouter.Use(s.authMiddleware)
+
+	s.handleSession(authedRouter)
+	s.handleAccount(authedRouter)
+
 	// public
 	root.PathPrefix(publicURLPrefix).Handler(gziphandler.GzipHandler(http.StripPrefix(publicURLPrefix, http.FileServer(http.Dir(s.Conf.StorageDir)))))
 
@@ -89,17 +100,6 @@ func (s *Server) setupRouter() {
 	root.PathPrefix("/{filename}.png").Handler(http.FileServer(s.Frontend))
 	s.handleFrontend(root)
 
-	// APIs not requiring auth
-	s.handlePing(root)
-	s.handleSessionPublic(root)
-
-	// APIs requiring auth
-	authedRouter := root.NewRoute().Subrouter()
-	authedRouter.Use(s.authMiddleware)
-
-	s.handleSession(authedRouter)
-	// s.handleDataset(authedRouter)
-
 	// setup CORS
 	handler := cors.New(cors.Options{
 		AllowedMethods:   []string{http.MethodHead, http.MethodGet, http.MethodPost, http.MethodPut, http.MethodPatch, http.MethodDelete},
@@ -108,14 +108,14 @@ func (s *Server) setupRouter() {
 		AllowCredentials: true,
 	}).Handler(root)
 
-	s.HttpHandler = handler
+	s.HTTPHandler = handler
 }
 
 // StartOrDie ...
 func (s *Server) StartOrDie() (err error) {
 	srv := &http.Server{
 		Addr:    fmt.Sprintf(":%d", s.Conf.Web.Port),
-		Handler: s.HttpHandler,
+		Handler: s.HTTPHandler,
 	}
 
 	glog.Infof("HTTP server listening on: %d", s.Conf.Web.Port)

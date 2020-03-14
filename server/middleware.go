@@ -60,7 +60,6 @@ func (s *Server) authMiddleware(next http.Handler) http.Handler {
 				return
 			}
 
-			glog.Error(err)
 			web.InternalError(w, err)
 			return
 		}

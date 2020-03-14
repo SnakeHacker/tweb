@@ -16,5 +16,6 @@
     "dashboard-menu": "Dashboard",
     "management-menu": "Management",
     "account-menu": "Account",
-    "model-menu": "Model"
+    "model-menu": "Model",
+    "loading": "加载中"
 }

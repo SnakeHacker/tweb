@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package account;
+
+option go_package = "github.com/SnakeHacker/tweb/server/proto";
+
+// Account
+
+message FetchAccountRequest {
+}
+
+message FetchAccountResponse {
+    common.Error error = 1;
+    repeated common.User accounts = 2;
+}
