@@ -1,8 +1,8 @@
 import { IsLoggedIn } from 'client/session'
-import Login from 'component/session/Login'
-import Index from 'component/index/Index'
+import Login from 'components/session/Login'
+import Index from 'components/index/Index'
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { URLRoot} from 'common'
 
 interface State {
@@ -14,16 +14,11 @@ export default class App extends React.Component<{}, State> {
     }
 
     render() {
-
         return (
             (!IsLoggedIn()) ? (
-                <Router>
-                    <Route exact={true} path={URLRoot} component={Login} />
-                </Router>
+                <Route exact={true} path={URLRoot} component={Login} />
             ) : (
-                <Router>
-                    <Route exact={true} path={`${URLRoot}/`} component={Index}/>
-                </Router>
+                <Route path={URLRoot} component={Index}/>
             )
         )
     }

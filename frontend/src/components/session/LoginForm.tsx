@@ -2,7 +2,7 @@ import { Button, Form, Input, Spin } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Store } from 'rc-field-form/lib/interface'
 import { Login } from 'client/session';
-import BaseComponent from 'component/Base';
+import BaseComponent from 'components/Base';
 import { session } from 'proto/session';
 import React from 'react';
 import intl from 'react-intl-universal';

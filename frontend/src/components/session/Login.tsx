@@ -1,5 +1,5 @@
 import { Typography } from 'antd';
-import LoginForm from 'component/session/LoginForm'
+import LoginForm from 'components/session/LoginForm'
 import React from 'react';
 import intl from 'react-intl-universal';
 import Particles from 'react-particles-js';

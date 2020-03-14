@@ -1,5 +1,6 @@
 {
     "tweb": "Tweb, 你的交易助手",
+    "hello": "您好: ",
     "username": "用户名",
     "password": "密码",
     "login": "登录",
@@ -11,5 +12,9 @@
     "error.proto.UNKNOWN_ERROR": "发生了未知错误",
     "error.http.500": "请求失败",
     "error.http.401": "未登录或登录已过期",
-    "error.http.404": "404"
+    "error.http.404": "404",
+    "dashboard-menu": "Dashboard",
+    "management-menu": "Management",
+    "account-menu": "Account",
+    "model-menu": "Model"
 }

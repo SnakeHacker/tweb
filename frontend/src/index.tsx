@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import intl from 'react-intl-universal';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom'
 import store from 'store';
 
 import './index.less';
@@ -23,7 +24,9 @@ import('antd/es/locale/' + lang + '.js').then(locale => {
         (
             <Provider store={store}>
                 <ConfigProvider locale={locale}>
-                    <App />
+                    <BrowserRouter>
+                        <App />
+                    </BrowserRouter>
                 </ConfigProvider>
             </Provider>
         ),
