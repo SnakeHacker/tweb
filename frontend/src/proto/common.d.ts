@@ -21,7 +21,7 @@ export namespace common {
     interface IUser {
 
         /** User id */
-        id?: (string|null);
+        id?: (number|Long|null);
 
         /** User role */
         role?: (common.UserRole|null);
@@ -40,7 +40,7 @@ export namespace common {
         constructor(properties?: common.IUser);
 
         /** User id. */
-        public id: string;
+        public id: (number|Long);
 
         /** User role. */
         public role: common.UserRole;

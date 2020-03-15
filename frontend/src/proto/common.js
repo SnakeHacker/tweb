@@ -56,7 +56,7 @@ export const common = $root.common = (() => {
          * Properties of a User.
          * @memberof common
          * @interface IUser
-         * @property {string|null} [id] User id
+         * @property {number|Long|null} [id] User id
          * @property {common.UserRole|null} [role] User role
          * @property {string|null} [nickname] User nickname
          */
@@ -78,11 +78,11 @@ export const common = $root.common = (() => {
 
         /**
          * User id.
-         * @member {string} id
+         * @member {number|Long} id
          * @memberof common.User
          * @instance
          */
-        User.prototype.id = "";
+        User.prototype.id = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         /**
          * User role.
@@ -125,7 +125,7 @@ export const common = $root.common = (() => {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && message.hasOwnProperty("id"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.id);
             if (message.role != null && message.hasOwnProperty("role"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.role);
             if (message.nickname != null && message.hasOwnProperty("nickname"))
@@ -165,7 +165,7 @@ export const common = $root.common = (() => {
                 let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.id = reader.string();
+                    message.id = reader.int64();
                     break;
                 case 2:
                     message.role = reader.int32();
@@ -209,8 +209,8 @@ export const common = $root.common = (() => {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             if (message.id != null && message.hasOwnProperty("id"))
-                if (!$util.isString(message.id))
-                    return "id: string expected";
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
             if (message.role != null && message.hasOwnProperty("role"))
                 switch (message.role) {
                 default:
@@ -239,7 +239,14 @@ export const common = $root.common = (() => {
                 return object;
             let message = new $root.common.User();
             if (object.id != null)
-                message.id = String(object.id);
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = false;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber();
             switch (object.role) {
             case "UNKNOWN_USER_ROLE":
             case 0:
@@ -273,12 +280,19 @@ export const common = $root.common = (() => {
                 options = {};
             let object = {};
             if (options.defaults) {
-                object.id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
                 object.role = options.enums === String ? "UNKNOWN_USER_ROLE" : 0;
                 object.nickname = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
-                object.id = message.id;
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber() : message.id;
             if (message.role != null && message.hasOwnProperty("role"))
                 object.role = options.enums === String ? $root.common.UserRole[message.role] : message.role;
             if (message.nickname != null && message.hasOwnProperty("nickname"))

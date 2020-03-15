@@ -1,6 +1,7 @@
 
-import { Typography, Button } from 'antd';
 import React from 'react';
+import { Typography, Button } from 'antd';
+import { LogoutOutlined } from '@ant-design/icons';
 import BaseComponent from 'components/Base';
 import { session } from 'proto/session';
 import { Logout, GetSession} from 'client/session';
@@ -47,9 +48,11 @@ class Header extends BaseComponent<{}, State> {
                         {intl.formatMessage({ id: "hello" }) + username}
                     </div>
                     <Button
-                        type="primary"
+                        type="default"
                         className="logout"
                         onClick={this.logout}
+                        icon={<LogoutOutlined />}
+                        shape="round"
                     >
                         {intl.formatMessage({ id: "logout" })}
                     </Button>

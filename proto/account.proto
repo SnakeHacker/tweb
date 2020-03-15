@@ -15,3 +15,29 @@ message FetchAccountResponse {
     common.Error error = 1;
     repeated common.User accounts = 2;
 }
+
+message CreateAccountRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message CreateAccountResponse {
+    common.Error error = 1;
+}
+
+message UpdateAccountRequest {
+    int64 id = 1;
+    string username = 2;
+}
+
+message UpdateAccountResponse {
+    common.Error error = 1;
+}
+
+message DeleteAccountRequest {
+    int64 id = 1;
+}
+
+message DeleteAccountResponse {
+    common.Error error = 1;
+}

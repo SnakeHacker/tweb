@@ -11,6 +11,7 @@ const (
 	errConf             = "conf_error"
 	errDB               = "db_error"
 	errLogin            = "login_error"
+	errAccount          = "account_error"
 )
 
 var (
@@ -25,6 +26,9 @@ var (
 
 	// Login error
 	ErrorInvalidUsernameOrPassowrd = makeError(errLogin, "invalid username or password")
+
+	// Account error
+	ErrorEmptyAccountUsernameOrPassowrd = makeError(errAccount, "username or password is empty")
 )
 
 func makeError(scope errScope, msg ...string) error {

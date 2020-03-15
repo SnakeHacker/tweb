@@ -430,6 +430,1271 @@ export const account = $root.account = (() => {
         return FetchAccountResponse;
     })();
 
+    account.CreateAccountRequest = (function() {
+
+        /**
+         * Properties of a CreateAccountRequest.
+         * @memberof account
+         * @interface ICreateAccountRequest
+         * @property {string|null} [username] CreateAccountRequest username
+         * @property {string|null} [password] CreateAccountRequest password
+         */
+
+        /**
+         * Constructs a new CreateAccountRequest.
+         * @memberof account
+         * @classdesc Represents a CreateAccountRequest.
+         * @implements ICreateAccountRequest
+         * @constructor
+         * @param {account.ICreateAccountRequest=} [properties] Properties to set
+         */
+        function CreateAccountRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * CreateAccountRequest username.
+         * @member {string} username
+         * @memberof account.CreateAccountRequest
+         * @instance
+         */
+        CreateAccountRequest.prototype.username = "";
+
+        /**
+         * CreateAccountRequest password.
+         * @member {string} password
+         * @memberof account.CreateAccountRequest
+         * @instance
+         */
+        CreateAccountRequest.prototype.password = "";
+
+        /**
+         * Creates a new CreateAccountRequest instance using the specified properties.
+         * @function create
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {account.ICreateAccountRequest=} [properties] Properties to set
+         * @returns {account.CreateAccountRequest} CreateAccountRequest instance
+         */
+        CreateAccountRequest.create = function create(properties) {
+            return new CreateAccountRequest(properties);
+        };
+
+        /**
+         * Encodes the specified CreateAccountRequest message. Does not implicitly {@link account.CreateAccountRequest.verify|verify} messages.
+         * @function encode
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {account.ICreateAccountRequest} message CreateAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateAccountRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.username != null && message.hasOwnProperty("username"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.username);
+            if (message.password != null && message.hasOwnProperty("password"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.password);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified CreateAccountRequest message, length delimited. Does not implicitly {@link account.CreateAccountRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {account.ICreateAccountRequest} message CreateAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateAccountRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a CreateAccountRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.CreateAccountRequest} CreateAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateAccountRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.CreateAccountRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.username = reader.string();
+                    break;
+                case 2:
+                    message.password = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a CreateAccountRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.CreateAccountRequest} CreateAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateAccountRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a CreateAccountRequest message.
+         * @function verify
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CreateAccountRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.username != null && message.hasOwnProperty("username"))
+                if (!$util.isString(message.username))
+                    return "username: string expected";
+            if (message.password != null && message.hasOwnProperty("password"))
+                if (!$util.isString(message.password))
+                    return "password: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a CreateAccountRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.CreateAccountRequest} CreateAccountRequest
+         */
+        CreateAccountRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.CreateAccountRequest)
+                return object;
+            let message = new $root.account.CreateAccountRequest();
+            if (object.username != null)
+                message.username = String(object.username);
+            if (object.password != null)
+                message.password = String(object.password);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a CreateAccountRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.CreateAccountRequest
+         * @static
+         * @param {account.CreateAccountRequest} message CreateAccountRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CreateAccountRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.username = "";
+                object.password = "";
+            }
+            if (message.username != null && message.hasOwnProperty("username"))
+                object.username = message.username;
+            if (message.password != null && message.hasOwnProperty("password"))
+                object.password = message.password;
+            return object;
+        };
+
+        /**
+         * Converts this CreateAccountRequest to JSON.
+         * @function toJSON
+         * @memberof account.CreateAccountRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CreateAccountRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return CreateAccountRequest;
+    })();
+
+    account.CreateAccountResponse = (function() {
+
+        /**
+         * Properties of a CreateAccountResponse.
+         * @memberof account
+         * @interface ICreateAccountResponse
+         * @property {common.Error|null} [error] CreateAccountResponse error
+         */
+
+        /**
+         * Constructs a new CreateAccountResponse.
+         * @memberof account
+         * @classdesc Represents a CreateAccountResponse.
+         * @implements ICreateAccountResponse
+         * @constructor
+         * @param {account.ICreateAccountResponse=} [properties] Properties to set
+         */
+        function CreateAccountResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * CreateAccountResponse error.
+         * @member {common.Error} error
+         * @memberof account.CreateAccountResponse
+         * @instance
+         */
+        CreateAccountResponse.prototype.error = 0;
+
+        /**
+         * Creates a new CreateAccountResponse instance using the specified properties.
+         * @function create
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {account.ICreateAccountResponse=} [properties] Properties to set
+         * @returns {account.CreateAccountResponse} CreateAccountResponse instance
+         */
+        CreateAccountResponse.create = function create(properties) {
+            return new CreateAccountResponse(properties);
+        };
+
+        /**
+         * Encodes the specified CreateAccountResponse message. Does not implicitly {@link account.CreateAccountResponse.verify|verify} messages.
+         * @function encode
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {account.ICreateAccountResponse} message CreateAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateAccountResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.error != null && message.hasOwnProperty("error"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.error);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified CreateAccountResponse message, length delimited. Does not implicitly {@link account.CreateAccountResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {account.ICreateAccountResponse} message CreateAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        CreateAccountResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a CreateAccountResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.CreateAccountResponse} CreateAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateAccountResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.CreateAccountResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.error = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a CreateAccountResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.CreateAccountResponse} CreateAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        CreateAccountResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a CreateAccountResponse message.
+         * @function verify
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        CreateAccountResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.error != null && message.hasOwnProperty("error"))
+                switch (message.error) {
+                default:
+                    return "error: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates a CreateAccountResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.CreateAccountResponse} CreateAccountResponse
+         */
+        CreateAccountResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.CreateAccountResponse)
+                return object;
+            let message = new $root.account.CreateAccountResponse();
+            switch (object.error) {
+            case "NO_ERROR":
+            case 0:
+                message.error = 0;
+                break;
+            case "UNKNOWN_ERROR":
+            case 1:
+                message.error = 1;
+                break;
+            case "INTERNAL_ERROR":
+            case 2:
+                message.error = 2;
+                break;
+            case "INVALID_USERNAME_OR_PASSWORD":
+            case 3:
+                message.error = 3;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a CreateAccountResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.CreateAccountResponse
+         * @static
+         * @param {account.CreateAccountResponse} message CreateAccountResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        CreateAccountResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.error = options.enums === String ? "NO_ERROR" : 0;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = options.enums === String ? $root.common.Error[message.error] : message.error;
+            return object;
+        };
+
+        /**
+         * Converts this CreateAccountResponse to JSON.
+         * @function toJSON
+         * @memberof account.CreateAccountResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        CreateAccountResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return CreateAccountResponse;
+    })();
+
+    account.UpdateAccountRequest = (function() {
+
+        /**
+         * Properties of an UpdateAccountRequest.
+         * @memberof account
+         * @interface IUpdateAccountRequest
+         * @property {number|Long|null} [id] UpdateAccountRequest id
+         * @property {string|null} [username] UpdateAccountRequest username
+         */
+
+        /**
+         * Constructs a new UpdateAccountRequest.
+         * @memberof account
+         * @classdesc Represents an UpdateAccountRequest.
+         * @implements IUpdateAccountRequest
+         * @constructor
+         * @param {account.IUpdateAccountRequest=} [properties] Properties to set
+         */
+        function UpdateAccountRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateAccountRequest id.
+         * @member {number|Long} id
+         * @memberof account.UpdateAccountRequest
+         * @instance
+         */
+        UpdateAccountRequest.prototype.id = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * UpdateAccountRequest username.
+         * @member {string} username
+         * @memberof account.UpdateAccountRequest
+         * @instance
+         */
+        UpdateAccountRequest.prototype.username = "";
+
+        /**
+         * Creates a new UpdateAccountRequest instance using the specified properties.
+         * @function create
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {account.IUpdateAccountRequest=} [properties] Properties to set
+         * @returns {account.UpdateAccountRequest} UpdateAccountRequest instance
+         */
+        UpdateAccountRequest.create = function create(properties) {
+            return new UpdateAccountRequest(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateAccountRequest message. Does not implicitly {@link account.UpdateAccountRequest.verify|verify} messages.
+         * @function encode
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {account.IUpdateAccountRequest} message UpdateAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateAccountRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && message.hasOwnProperty("id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.id);
+            if (message.username != null && message.hasOwnProperty("username"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.username);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateAccountRequest message, length delimited. Does not implicitly {@link account.UpdateAccountRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {account.IUpdateAccountRequest} message UpdateAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateAccountRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateAccountRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.UpdateAccountRequest} UpdateAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateAccountRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.UpdateAccountRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.int64();
+                    break;
+                case 2:
+                    message.username = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateAccountRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.UpdateAccountRequest} UpdateAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateAccountRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateAccountRequest message.
+         * @function verify
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateAccountRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
+            if (message.username != null && message.hasOwnProperty("username"))
+                if (!$util.isString(message.username))
+                    return "username: string expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateAccountRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.UpdateAccountRequest} UpdateAccountRequest
+         */
+        UpdateAccountRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.UpdateAccountRequest)
+                return object;
+            let message = new $root.account.UpdateAccountRequest();
+            if (object.id != null)
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = false;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber();
+            if (object.username != null)
+                message.username = String(object.username);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateAccountRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.UpdateAccountRequest
+         * @static
+         * @param {account.UpdateAccountRequest} message UpdateAccountRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateAccountRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
+                object.username = "";
+            }
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber() : message.id;
+            if (message.username != null && message.hasOwnProperty("username"))
+                object.username = message.username;
+            return object;
+        };
+
+        /**
+         * Converts this UpdateAccountRequest to JSON.
+         * @function toJSON
+         * @memberof account.UpdateAccountRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateAccountRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return UpdateAccountRequest;
+    })();
+
+    account.UpdateAccountResponse = (function() {
+
+        /**
+         * Properties of an UpdateAccountResponse.
+         * @memberof account
+         * @interface IUpdateAccountResponse
+         * @property {common.Error|null} [error] UpdateAccountResponse error
+         */
+
+        /**
+         * Constructs a new UpdateAccountResponse.
+         * @memberof account
+         * @classdesc Represents an UpdateAccountResponse.
+         * @implements IUpdateAccountResponse
+         * @constructor
+         * @param {account.IUpdateAccountResponse=} [properties] Properties to set
+         */
+        function UpdateAccountResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateAccountResponse error.
+         * @member {common.Error} error
+         * @memberof account.UpdateAccountResponse
+         * @instance
+         */
+        UpdateAccountResponse.prototype.error = 0;
+
+        /**
+         * Creates a new UpdateAccountResponse instance using the specified properties.
+         * @function create
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {account.IUpdateAccountResponse=} [properties] Properties to set
+         * @returns {account.UpdateAccountResponse} UpdateAccountResponse instance
+         */
+        UpdateAccountResponse.create = function create(properties) {
+            return new UpdateAccountResponse(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateAccountResponse message. Does not implicitly {@link account.UpdateAccountResponse.verify|verify} messages.
+         * @function encode
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {account.IUpdateAccountResponse} message UpdateAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateAccountResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.error != null && message.hasOwnProperty("error"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.error);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateAccountResponse message, length delimited. Does not implicitly {@link account.UpdateAccountResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {account.IUpdateAccountResponse} message UpdateAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateAccountResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateAccountResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.UpdateAccountResponse} UpdateAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateAccountResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.UpdateAccountResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.error = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateAccountResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.UpdateAccountResponse} UpdateAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateAccountResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateAccountResponse message.
+         * @function verify
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateAccountResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.error != null && message.hasOwnProperty("error"))
+                switch (message.error) {
+                default:
+                    return "error: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates an UpdateAccountResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.UpdateAccountResponse} UpdateAccountResponse
+         */
+        UpdateAccountResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.UpdateAccountResponse)
+                return object;
+            let message = new $root.account.UpdateAccountResponse();
+            switch (object.error) {
+            case "NO_ERROR":
+            case 0:
+                message.error = 0;
+                break;
+            case "UNKNOWN_ERROR":
+            case 1:
+                message.error = 1;
+                break;
+            case "INTERNAL_ERROR":
+            case 2:
+                message.error = 2;
+                break;
+            case "INVALID_USERNAME_OR_PASSWORD":
+            case 3:
+                message.error = 3;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateAccountResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.UpdateAccountResponse
+         * @static
+         * @param {account.UpdateAccountResponse} message UpdateAccountResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateAccountResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.error = options.enums === String ? "NO_ERROR" : 0;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = options.enums === String ? $root.common.Error[message.error] : message.error;
+            return object;
+        };
+
+        /**
+         * Converts this UpdateAccountResponse to JSON.
+         * @function toJSON
+         * @memberof account.UpdateAccountResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateAccountResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return UpdateAccountResponse;
+    })();
+
+    account.DeleteAccountRequest = (function() {
+
+        /**
+         * Properties of a DeleteAccountRequest.
+         * @memberof account
+         * @interface IDeleteAccountRequest
+         * @property {number|Long|null} [id] DeleteAccountRequest id
+         */
+
+        /**
+         * Constructs a new DeleteAccountRequest.
+         * @memberof account
+         * @classdesc Represents a DeleteAccountRequest.
+         * @implements IDeleteAccountRequest
+         * @constructor
+         * @param {account.IDeleteAccountRequest=} [properties] Properties to set
+         */
+        function DeleteAccountRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeleteAccountRequest id.
+         * @member {number|Long} id
+         * @memberof account.DeleteAccountRequest
+         * @instance
+         */
+        DeleteAccountRequest.prototype.id = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * Creates a new DeleteAccountRequest instance using the specified properties.
+         * @function create
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {account.IDeleteAccountRequest=} [properties] Properties to set
+         * @returns {account.DeleteAccountRequest} DeleteAccountRequest instance
+         */
+        DeleteAccountRequest.create = function create(properties) {
+            return new DeleteAccountRequest(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteAccountRequest message. Does not implicitly {@link account.DeleteAccountRequest.verify|verify} messages.
+         * @function encode
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {account.IDeleteAccountRequest} message DeleteAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteAccountRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.id != null && message.hasOwnProperty("id"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.id);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteAccountRequest message, length delimited. Does not implicitly {@link account.DeleteAccountRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {account.IDeleteAccountRequest} message DeleteAccountRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteAccountRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteAccountRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.DeleteAccountRequest} DeleteAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteAccountRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.DeleteAccountRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.id = reader.int64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteAccountRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.DeleteAccountRequest} DeleteAccountRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteAccountRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteAccountRequest message.
+         * @function verify
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteAccountRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a DeleteAccountRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.DeleteAccountRequest} DeleteAccountRequest
+         */
+        DeleteAccountRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.DeleteAccountRequest)
+                return object;
+            let message = new $root.account.DeleteAccountRequest();
+            if (object.id != null)
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = false;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber();
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeleteAccountRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.DeleteAccountRequest
+         * @static
+         * @param {account.DeleteAccountRequest} message DeleteAccountRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteAccountRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
+            if (message.id != null && message.hasOwnProperty("id"))
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber() : message.id;
+            return object;
+        };
+
+        /**
+         * Converts this DeleteAccountRequest to JSON.
+         * @function toJSON
+         * @memberof account.DeleteAccountRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteAccountRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return DeleteAccountRequest;
+    })();
+
+    account.DeleteAccountResponse = (function() {
+
+        /**
+         * Properties of a DeleteAccountResponse.
+         * @memberof account
+         * @interface IDeleteAccountResponse
+         * @property {common.Error|null} [error] DeleteAccountResponse error
+         */
+
+        /**
+         * Constructs a new DeleteAccountResponse.
+         * @memberof account
+         * @classdesc Represents a DeleteAccountResponse.
+         * @implements IDeleteAccountResponse
+         * @constructor
+         * @param {account.IDeleteAccountResponse=} [properties] Properties to set
+         */
+        function DeleteAccountResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * DeleteAccountResponse error.
+         * @member {common.Error} error
+         * @memberof account.DeleteAccountResponse
+         * @instance
+         */
+        DeleteAccountResponse.prototype.error = 0;
+
+        /**
+         * Creates a new DeleteAccountResponse instance using the specified properties.
+         * @function create
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {account.IDeleteAccountResponse=} [properties] Properties to set
+         * @returns {account.DeleteAccountResponse} DeleteAccountResponse instance
+         */
+        DeleteAccountResponse.create = function create(properties) {
+            return new DeleteAccountResponse(properties);
+        };
+
+        /**
+         * Encodes the specified DeleteAccountResponse message. Does not implicitly {@link account.DeleteAccountResponse.verify|verify} messages.
+         * @function encode
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {account.IDeleteAccountResponse} message DeleteAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteAccountResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.error != null && message.hasOwnProperty("error"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.error);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified DeleteAccountResponse message, length delimited. Does not implicitly {@link account.DeleteAccountResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {account.IDeleteAccountResponse} message DeleteAccountResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        DeleteAccountResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a DeleteAccountResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {account.DeleteAccountResponse} DeleteAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteAccountResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.account.DeleteAccountResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.error = reader.int32();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a DeleteAccountResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {account.DeleteAccountResponse} DeleteAccountResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        DeleteAccountResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a DeleteAccountResponse message.
+         * @function verify
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        DeleteAccountResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.error != null && message.hasOwnProperty("error"))
+                switch (message.error) {
+                default:
+                    return "error: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            return null;
+        };
+
+        /**
+         * Creates a DeleteAccountResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {account.DeleteAccountResponse} DeleteAccountResponse
+         */
+        DeleteAccountResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.account.DeleteAccountResponse)
+                return object;
+            let message = new $root.account.DeleteAccountResponse();
+            switch (object.error) {
+            case "NO_ERROR":
+            case 0:
+                message.error = 0;
+                break;
+            case "UNKNOWN_ERROR":
+            case 1:
+                message.error = 1;
+                break;
+            case "INTERNAL_ERROR":
+            case 2:
+                message.error = 2;
+                break;
+            case "INVALID_USERNAME_OR_PASSWORD":
+            case 3:
+                message.error = 3;
+                break;
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a DeleteAccountResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof account.DeleteAccountResponse
+         * @static
+         * @param {account.DeleteAccountResponse} message DeleteAccountResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        DeleteAccountResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults)
+                object.error = options.enums === String ? "NO_ERROR" : 0;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = options.enums === String ? $root.common.Error[message.error] : message.error;
+            return object;
+        };
+
+        /**
+         * Converts this DeleteAccountResponse to JSON.
+         * @function toJSON
+         * @memberof account.DeleteAccountResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        DeleteAccountResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return DeleteAccountResponse;
+    })();
+
     return account;
 })();
 
@@ -482,7 +1747,7 @@ export const common = $root.common = (() => {
          * Properties of a User.
          * @memberof common
          * @interface IUser
-         * @property {string|null} [id] User id
+         * @property {number|Long|null} [id] User id
          * @property {common.UserRole|null} [role] User role
          * @property {string|null} [nickname] User nickname
          */
@@ -504,11 +1769,11 @@ export const common = $root.common = (() => {
 
         /**
          * User id.
-         * @member {string} id
+         * @member {number|Long} id
          * @memberof common.User
          * @instance
          */
-        User.prototype.id = "";
+        User.prototype.id = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
 
         /**
          * User role.
@@ -551,7 +1816,7 @@ export const common = $root.common = (() => {
             if (!writer)
                 writer = $Writer.create();
             if (message.id != null && message.hasOwnProperty("id"))
-                writer.uint32(/* id 1, wireType 2 =*/10).string(message.id);
+                writer.uint32(/* id 1, wireType 0 =*/8).int64(message.id);
             if (message.role != null && message.hasOwnProperty("role"))
                 writer.uint32(/* id 2, wireType 0 =*/16).int32(message.role);
             if (message.nickname != null && message.hasOwnProperty("nickname"))
@@ -591,7 +1856,7 @@ export const common = $root.common = (() => {
                 let tag = reader.uint32();
                 switch (tag >>> 3) {
                 case 1:
-                    message.id = reader.string();
+                    message.id = reader.int64();
                     break;
                 case 2:
                     message.role = reader.int32();
@@ -635,8 +1900,8 @@ export const common = $root.common = (() => {
             if (typeof message !== "object" || message === null)
                 return "object expected";
             if (message.id != null && message.hasOwnProperty("id"))
-                if (!$util.isString(message.id))
-                    return "id: string expected";
+                if (!$util.isInteger(message.id) && !(message.id && $util.isInteger(message.id.low) && $util.isInteger(message.id.high)))
+                    return "id: integer|Long expected";
             if (message.role != null && message.hasOwnProperty("role"))
                 switch (message.role) {
                 default:
@@ -665,7 +1930,14 @@ export const common = $root.common = (() => {
                 return object;
             let message = new $root.common.User();
             if (object.id != null)
-                message.id = String(object.id);
+                if ($util.Long)
+                    (message.id = $util.Long.fromValue(object.id)).unsigned = false;
+                else if (typeof object.id === "string")
+                    message.id = parseInt(object.id, 10);
+                else if (typeof object.id === "number")
+                    message.id = object.id;
+                else if (typeof object.id === "object")
+                    message.id = new $util.LongBits(object.id.low >>> 0, object.id.high >>> 0).toNumber();
             switch (object.role) {
             case "UNKNOWN_USER_ROLE":
             case 0:
@@ -699,12 +1971,19 @@ export const common = $root.common = (() => {
                 options = {};
             let object = {};
             if (options.defaults) {
-                object.id = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.id = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.id = options.longs === String ? "0" : 0;
                 object.role = options.enums === String ? "UNKNOWN_USER_ROLE" : 0;
                 object.nickname = "";
             }
             if (message.id != null && message.hasOwnProperty("id"))
-                object.id = message.id;
+                if (typeof message.id === "number")
+                    object.id = options.longs === String ? String(message.id) : message.id;
+                else
+                    object.id = options.longs === String ? $util.Long.prototype.toString.call(message.id) : options.longs === Number ? new $util.LongBits(message.id.low >>> 0, message.id.high >>> 0).toNumber() : message.id;
             if (message.role != null && message.hasOwnProperty("role"))
                 object.role = options.enums === String ? $root.common.UserRole[message.role] : message.role;
             if (message.nickname != null && message.hasOwnProperty("nickname"))
