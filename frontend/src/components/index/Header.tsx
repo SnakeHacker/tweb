@@ -4,9 +4,12 @@ import { Typography, Button } from 'antd';
 import { LogoutOutlined } from '@ant-design/icons';
 import BaseComponent from 'components/Base';
 import { session } from 'proto/session';
+import { common } from 'proto/common';
 import { Logout, GetSession} from 'client/session';
 import intl from 'react-intl-universal';
-import { URLRoot } from 'common'
+import { URLRoot } from 'common';
+import store from 'store';
+import { setIsAdmin  } from 'store/global/action';
 
 import "./header.less"
 
@@ -23,7 +26,7 @@ class Header extends BaseComponent<{}, State> {
     };
 
     componentDidMount() {
-        this.fetchUserInfo()
+        this.fetchUserInfo();
     }
 
 
@@ -31,7 +34,10 @@ class Header extends BaseComponent<{}, State> {
         const sess = GetSession();
         this.setState({
             username: sess?.user?.nickname || "",
-        })
+        });
+        if (sess?.user?.role === common.UserRole.ROLE_ADMIN){
+            store.dispatch(setIsAdmin(true));
+        }
     }
 
     render() {
@@ -69,8 +75,6 @@ class Header extends BaseComponent<{}, State> {
         if (!this.checkHTTPResult(result)) {
             return
         }
-
-        console.log(URL)
 
         // reset the page to force to login page
         window.location.href = URLRoot;

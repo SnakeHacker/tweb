@@ -10,14 +10,31 @@ import {
     SettingOutlined
 } from '@ant-design/icons';
 import intl from 'react-intl-universal';
+import store from 'store';
 
 import './sidebar.less'
 
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
-class Siderbar extends React.Component<{}, {}> {
+interface State {
+    isAdmin: boolean
+}
+
+class Siderbar extends React.Component<{}, State> {
+    state: Readonly<State> = {
+        isAdmin: false,
+    };
+
+    componentDidMount(){
+        this.setState({
+            isAdmin: store.getState().global.isAdmin
+        })
+    }
+
     render() {
+        const {isAdmin} = this.state;
+        
         return (
             <Sider width={200} className="sidebar">
                 <Menu
@@ -28,6 +45,7 @@ class Siderbar extends React.Component<{}, {}> {
                         <PieChartOutlined />
                         <Link to="/app/dashboard">{intl.formatMessage({ id: "dashboard-menu"})}</Link>
                         </Menu.Item>
+                    {isAdmin && 
                     <SubMenu 
                         key="management" 
                         className="sub-menu" 
@@ -37,6 +55,7 @@ class Siderbar extends React.Component<{}, {}> {
                                 <span>{intl.formatMessage({ id: "management-menu"})}</span>
                             </span>
                         }>
+
                         <Menu.Item key="account_management" className="menu-item">
                             <UserOutlined />
                             <Link to="/app/management/account">{intl.formatMessage({ id: "account-menu"})}</Link>
@@ -46,7 +65,7 @@ class Siderbar extends React.Component<{}, {}> {
                             <Link to="/app/management/model">{intl.formatMessage({ id: "model-menu"})}</Link>
                         </Menu.Item>
                     </SubMenu>
-                    
+                    }
                 </Menu>
             </Sider>
         )

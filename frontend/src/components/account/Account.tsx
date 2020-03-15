@@ -6,7 +6,9 @@ import Header from 'components/account/Header';
 import { FetchAccountList, UpdateAccount, DeleteAccount } from 'client/account';
 import { account } from 'proto/account';
 import { common } from 'proto/common';
+import store from 'store';
 import intl from 'react-intl-universal';
+
 
 import "./account.less"
 
@@ -19,6 +21,7 @@ interface State {
     id: number;
     visibleEditAccountModal: boolean;
     visibleDeleteAccountModal: boolean;
+    isAdmin: boolean;
 }
 // class Account extends React.Component<{}, {}> {
 class Account extends BaseComponent<{}, State> {
@@ -28,10 +31,14 @@ class Account extends BaseComponent<{}, State> {
         username: "",
         id: -1,
         visibleEditAccountModal: false,
-        visibleDeleteAccountModal: false
+        visibleDeleteAccountModal: false,
+        isAdmin:  false,
     };
     
     componentDidMount(){
+        this.setState({
+            isAdmin: store.getState().global.isAdmin
+        });
         this.fetchAccounts();
     }
 
@@ -134,9 +141,11 @@ class Account extends BaseComponent<{}, State> {
     }
 
     render() {
-        const {username, visibleEditAccountModal}=this.state;
+        const {username, visibleEditAccountModal, isAdmin}=this.state;
         return (
             <Layout>
+                {isAdmin && 
+                <Layout>
                 <List
                     header={<Header fetchAccounts={this.fetchAccounts}/>}
                     bordered
@@ -168,6 +177,7 @@ class Account extends BaseComponent<{}, State> {
                                     type="default"
                                     className="option" 
                                     icon={<DeleteOutlined />} 
+                                    disabled={item.role === common.UserRole.ROLE_ADMIN}
                                     shape="circle"
                                     onClick={()=>this.deleteAccountConfirm(item.id)}
                                 />
@@ -203,8 +213,9 @@ class Account extends BaseComponent<{}, State> {
                     </div>
 
                 </Modal>
+                </Layout>
+                }
             </Layout>
-        
         )
     }
 }
