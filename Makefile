@@ -21,11 +21,11 @@ run_docker_prod:
 	docker-compose -f docker-compose-prod.yml up -d
 
 build_linux: proto
-	cd frontend && make build_project
+	cd frontend && make install && make build_project
 	GOOS=linux GOARCH=amd64 CGO_ENABLED=0 packr2 build -o server main/main.go
 
 build_darwin: proto
-	cd frontend && make build_project
+	cd frontend && make install && make build_project
 	GOOS=darwin GOARCH=amd64 CGO_ENABLED=0 packr2 build -o server main/main.go
 
 clean:
