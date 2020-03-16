@@ -32,10 +32,10 @@ clean:
 	cd main && packr2 clean
 
 build_image:
-	docker build -f Dockerfile --no-cache -t mickeyzhoudocker/tweb:latest .
+	docker build -f dev.Dockerfile --no-cache -t mickeyzhoudocker/tweb:latest .
 
 build_prod_image:
-	docker build -f prod.Dockerfile --no-cache -t mickeyzhoudocker/tweb_prod:latest .
+	docker build -f Dockerfile --no-cache -t mickeyzhoudocker/tweb_prod:latest .
 
 build_base_image:
-	docker build -f devel.Dockerfile -t mickeyzhoudocker/devel:latest .
+	docker build -f base.Dockerfile -t mickeyzhoudocker/devel:latest .
