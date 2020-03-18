@@ -32,10 +32,13 @@ var (
 	ErrorEmptyAccountUsernameOrPassowrd = makeError(errAccount, "username or password is empty")
 
 	// Tushare error
-	ErrTushareURL            = makeError(errTushare, "url is empty.")
-	ErrTushareToken          = makeError(errTushare, "token is empty.")
-	ErrTushareCodeEmpty      = makeError(errTushare, "code is empty.")
-	ErrTushareStockFieldsLen = makeError(errTushare, "length of stock fields is not equal to headers.")
+	ErrTushareURL                        = makeError(errTushare, "url is empty.")
+	ErrTushareToken                      = makeError(errTushare, "token is empty.")
+	ErrTushareCodeEmpty                  = makeError(errTushare, "code is empty.")
+	ErrTushareStockFieldsLen             = makeError(errTushare, "length of stock fields is not equal to headers.")
+	ErrTushareDailyParamsEmpty           = makeError(errTushare, "daily params is empty.")
+	ErrTushareDailyFieldsUnknown         = makeError(errTushare, "unknown daily field.")
+	ErrTushareConceptDetailFieldsUnknown = makeError(errTushare, "unknown concept detail field.")
 )
 
 func makeError(scope errScope, msg ...string) error {
