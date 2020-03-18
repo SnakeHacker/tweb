@@ -4,7 +4,6 @@ import BaseComponent from 'components/Base';
 import StockViewer from 'components/stock/Stock';
 import { FetchStockDaily } from 'client/stock';
 import {stock} from 'proto/stock';
-import moment from 'moment';
 import intl from 'react-intl-universal';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 
@@ -47,7 +46,6 @@ class Dashboard extends BaseComponent<{}, State> {
         let dailyData = [];
 
         for (let daily of resp.response?.dailys || []){
-            // let tradeDate = moment(daily.trade_date||"", 'YYYYMMDD').unix()*1000
             let tradeDate = daily.trade_date;
             let open = daily.open;
             let high = daily.high;
@@ -57,8 +55,6 @@ class Dashboard extends BaseComponent<{}, State> {
         }
 
         dailyData.reverse();
-
-        console.log("dashboard", dailyData as number[][])
 
         this.setState({
             dailys: dailyData as number[][]

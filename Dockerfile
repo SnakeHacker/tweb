@@ -2,11 +2,12 @@
 FROM mickeyzhoudocker/devel:latest AS build
 
 ENV PROJECT_PATH=/go/src/github.com/SnakeHacker/tweb
-COPY common ${PROJECT_PATH}/common
 COPY frontend ${PROJECT_PATH}/frontend
-COPY main ${PROJECT_PATH}/main
 COPY proto ${PROJECT_PATH}/proto
+COPY main ${PROJECT_PATH}/main
 COPY server ${PROJECT_PATH}/server
+COPY common ${PROJECT_PATH}/common
+COPY tushare ${PROJECT_PATH}/tushare
 COPY Makefile ${PROJECT_PATH}/Makefile
 COPY proto.sh ${PROJECT_PATH}/proto.sh
 
