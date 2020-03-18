@@ -74,41 +74,7 @@ class StockViewer extends BaseComponent<Props, State> {
                         color0: '#00f901',
                         borderColor: 'red',
                         borderColor0: 'green'
-                    },
-                    markPoint: {
-                        label: {
-                            normal: {
-                                formatter: (param: any)=> {
-                                    return param != null ? Math.round(param.value) : '';
-                                }
-                            }
-                        },
-                        data: [
-                            {
-                                name: 'XX标点',
-                                coord: ['20200310', 14.0],
-                                value: 14.0,
-                                itemStyle: {
-                                    color: 'red'
-                                }
-                            },
-                            {
-                                name: 'highest value',
-                                type: 'max',
-                                valueDim: 'highest'
-                            },
-                            {
-                                name: 'lowest value',
-                                type: 'min',
-                                valueDim: 'lowest'
-                            }
-                        ],
-                        tooltip: {
-                            formatter: (param: any) => {
-                                return param.name + '<br>' + (param.data.coord || '');
-                            }
-                        }
-                    },
+                    }
                 }
             ]
         }

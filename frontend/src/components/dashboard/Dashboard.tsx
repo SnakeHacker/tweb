@@ -119,6 +119,7 @@ class Dashboard extends BaseComponent<{}, State> {
                     <Search
                     placeholder={intl.formatMessage({id: "inputTsCode"})}
                     onSearch={this.onTsCodeSearch}
+                    onChange={this.onTsCodeChange}
                     value={tsCode}
                     style={{ width: 200 }}/>
                 </div>
