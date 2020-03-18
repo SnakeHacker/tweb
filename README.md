@@ -12,6 +12,7 @@ Tweb支持3种启动方式
 * ### 1. Docker启动
     请先确保PostgreSQL已部署
     熟读[`conf-docker.yaml`](conf-docker.yaml)配置，修改DB配置
+    修改
     ```
     cd tweb
     make run_docker_prod
@@ -19,7 +20,8 @@ Tweb支持3种启动方式
     在浏览器中输入 [`http://localhost:8888`](http://localhost:8888) 访问  
 
 * ### 2. 开发模式，通过Docker 编译代码
-    请先熟读[`conf-docker.yaml`](conf-docker.yaml)配置
+    请先熟读[`conf-docker.yaml`](conf-docker.yaml)配置  
+    修改[`docker-compose-prod.yaml](docker-compose-prod.yaml) 配置`${TUSHARE_TOKEN}`为申请的token值([Tushare Token注册申请](https://tushare.pro/register?reg=238705))  
     ```
     cd tweb
     make run_docker
