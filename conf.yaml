@@ -25,3 +25,7 @@ create_admin: false
 admin:
     username: admin
     password: admin
+# 备案信息
+record:
+    code: ${YOUR_RECORD_CODE}
+    url: ${YOUR_RECORD_URL}

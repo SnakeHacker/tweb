@@ -1,10 +1,14 @@
 package server
 
 import (
+	"net/http"
 	"time"
 
 	"github.com/SnakeHacker/tweb/common/utils/io"
+	"github.com/SnakeHacker/tweb/common/utils/web"
+	"github.com/SnakeHacker/tweb/server/proto"
 	"github.com/golang/glog"
+	"github.com/gorilla/mux"
 )
 
 // Conf ...
@@ -21,14 +25,21 @@ type Conf struct {
 		IdleTimeoutInSec  time.Duration `yaml:"idle_timeout_sec"`
 		ShutdownWaitInSec time.Duration `yaml:"shutdown_wait_sec"`
 	} `yaml:"web"`
-	CreateAdmin bool  `yaml:"create_admin"`
-	Admin       Admin `yaml:"admin"`
+	CreateAdmin bool   `yaml:"create_admin"`
+	Admin       Admin  `yaml:"admin"`
+	Record      Record `yaml:"record"`
 }
 
 // Admin ...
 type Admin struct {
 	Username string `yaml:"username"`
 	Password string `yaml:"password"`
+}
+
+// Record ...
+type Record struct {
+	Code string `yaml:"code"`
+	URL  string `yaml:"url"`
 }
 
 // LoadConf load config from yaml
@@ -53,4 +64,20 @@ func (c *Conf) Validate() (err error) {
 		return
 	}
 	return
+}
+
+func (s *Server) handleConf(router *mux.Router) {
+	router.HandleFunc(`/conf/record/`, s.FetchRecord).Methods("GET")
+}
+
+// FetchRecord ...
+func (s *Server) FetchRecord(w http.ResponseWriter, r *http.Request) {
+	var resp proto.FetchRecordResponse
+
+	resp.Url = s.Conf.Record.URL
+	resp.Code = s.Conf.Record.Code
+
+	web.RespondJSON(w, &resp)
+	return
+
 }

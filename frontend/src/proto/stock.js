@@ -7,6 +7,532 @@ const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
+export const stock = $root.stock = (() => {
+
+    /**
+     * Namespace stock.
+     * @exports stock
+     * @namespace
+     */
+    const stock = {};
+
+    stock.FetchStockDailyRequest = (function() {
+
+        /**
+         * Properties of a FetchStockDailyRequest.
+         * @memberof stock
+         * @interface IFetchStockDailyRequest
+         * @property {string|null} [code] FetchStockDailyRequest code
+         * @property {number|Long|null} [start] FetchStockDailyRequest start
+         * @property {number|Long|null} [end] FetchStockDailyRequest end
+         */
+
+        /**
+         * Constructs a new FetchStockDailyRequest.
+         * @memberof stock
+         * @classdesc Represents a FetchStockDailyRequest.
+         * @implements IFetchStockDailyRequest
+         * @constructor
+         * @param {stock.IFetchStockDailyRequest=} [properties] Properties to set
+         */
+        function FetchStockDailyRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * FetchStockDailyRequest code.
+         * @member {string} code
+         * @memberof stock.FetchStockDailyRequest
+         * @instance
+         */
+        FetchStockDailyRequest.prototype.code = "";
+
+        /**
+         * FetchStockDailyRequest start.
+         * @member {number|Long} start
+         * @memberof stock.FetchStockDailyRequest
+         * @instance
+         */
+        FetchStockDailyRequest.prototype.start = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * FetchStockDailyRequest end.
+         * @member {number|Long} end
+         * @memberof stock.FetchStockDailyRequest
+         * @instance
+         */
+        FetchStockDailyRequest.prototype.end = $util.Long ? $util.Long.fromBits(0,0,false) : 0;
+
+        /**
+         * Creates a new FetchStockDailyRequest instance using the specified properties.
+         * @function create
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {stock.IFetchStockDailyRequest=} [properties] Properties to set
+         * @returns {stock.FetchStockDailyRequest} FetchStockDailyRequest instance
+         */
+        FetchStockDailyRequest.create = function create(properties) {
+            return new FetchStockDailyRequest(properties);
+        };
+
+        /**
+         * Encodes the specified FetchStockDailyRequest message. Does not implicitly {@link stock.FetchStockDailyRequest.verify|verify} messages.
+         * @function encode
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {stock.IFetchStockDailyRequest} message FetchStockDailyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchStockDailyRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.code != null && message.hasOwnProperty("code"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.code);
+            if (message.start != null && message.hasOwnProperty("start"))
+                writer.uint32(/* id 2, wireType 0 =*/16).int64(message.start);
+            if (message.end != null && message.hasOwnProperty("end"))
+                writer.uint32(/* id 3, wireType 0 =*/24).int64(message.end);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FetchStockDailyRequest message, length delimited. Does not implicitly {@link stock.FetchStockDailyRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {stock.IFetchStockDailyRequest} message FetchStockDailyRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchStockDailyRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a FetchStockDailyRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {stock.FetchStockDailyRequest} FetchStockDailyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchStockDailyRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.stock.FetchStockDailyRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.code = reader.string();
+                    break;
+                case 2:
+                    message.start = reader.int64();
+                    break;
+                case 3:
+                    message.end = reader.int64();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a FetchStockDailyRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {stock.FetchStockDailyRequest} FetchStockDailyRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchStockDailyRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a FetchStockDailyRequest message.
+         * @function verify
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FetchStockDailyRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.code != null && message.hasOwnProperty("code"))
+                if (!$util.isString(message.code))
+                    return "code: string expected";
+            if (message.start != null && message.hasOwnProperty("start"))
+                if (!$util.isInteger(message.start) && !(message.start && $util.isInteger(message.start.low) && $util.isInteger(message.start.high)))
+                    return "start: integer|Long expected";
+            if (message.end != null && message.hasOwnProperty("end"))
+                if (!$util.isInteger(message.end) && !(message.end && $util.isInteger(message.end.low) && $util.isInteger(message.end.high)))
+                    return "end: integer|Long expected";
+            return null;
+        };
+
+        /**
+         * Creates a FetchStockDailyRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {stock.FetchStockDailyRequest} FetchStockDailyRequest
+         */
+        FetchStockDailyRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.stock.FetchStockDailyRequest)
+                return object;
+            let message = new $root.stock.FetchStockDailyRequest();
+            if (object.code != null)
+                message.code = String(object.code);
+            if (object.start != null)
+                if ($util.Long)
+                    (message.start = $util.Long.fromValue(object.start)).unsigned = false;
+                else if (typeof object.start === "string")
+                    message.start = parseInt(object.start, 10);
+                else if (typeof object.start === "number")
+                    message.start = object.start;
+                else if (typeof object.start === "object")
+                    message.start = new $util.LongBits(object.start.low >>> 0, object.start.high >>> 0).toNumber();
+            if (object.end != null)
+                if ($util.Long)
+                    (message.end = $util.Long.fromValue(object.end)).unsigned = false;
+                else if (typeof object.end === "string")
+                    message.end = parseInt(object.end, 10);
+                else if (typeof object.end === "number")
+                    message.end = object.end;
+                else if (typeof object.end === "object")
+                    message.end = new $util.LongBits(object.end.low >>> 0, object.end.high >>> 0).toNumber();
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a FetchStockDailyRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof stock.FetchStockDailyRequest
+         * @static
+         * @param {stock.FetchStockDailyRequest} message FetchStockDailyRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FetchStockDailyRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.code = "";
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.start = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.start = options.longs === String ? "0" : 0;
+                if ($util.Long) {
+                    let long = new $util.Long(0, 0, false);
+                    object.end = options.longs === String ? long.toString() : options.longs === Number ? long.toNumber() : long;
+                } else
+                    object.end = options.longs === String ? "0" : 0;
+            }
+            if (message.code != null && message.hasOwnProperty("code"))
+                object.code = message.code;
+            if (message.start != null && message.hasOwnProperty("start"))
+                if (typeof message.start === "number")
+                    object.start = options.longs === String ? String(message.start) : message.start;
+                else
+                    object.start = options.longs === String ? $util.Long.prototype.toString.call(message.start) : options.longs === Number ? new $util.LongBits(message.start.low >>> 0, message.start.high >>> 0).toNumber() : message.start;
+            if (message.end != null && message.hasOwnProperty("end"))
+                if (typeof message.end === "number")
+                    object.end = options.longs === String ? String(message.end) : message.end;
+                else
+                    object.end = options.longs === String ? $util.Long.prototype.toString.call(message.end) : options.longs === Number ? new $util.LongBits(message.end.low >>> 0, message.end.high >>> 0).toNumber() : message.end;
+            return object;
+        };
+
+        /**
+         * Converts this FetchStockDailyRequest to JSON.
+         * @function toJSON
+         * @memberof stock.FetchStockDailyRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FetchStockDailyRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return FetchStockDailyRequest;
+    })();
+
+    stock.FetchStockDailyResponse = (function() {
+
+        /**
+         * Properties of a FetchStockDailyResponse.
+         * @memberof stock
+         * @interface IFetchStockDailyResponse
+         * @property {common.Error|null} [error] FetchStockDailyResponse error
+         * @property {Array.<common.IStockDaily>|null} [dailys] FetchStockDailyResponse dailys
+         */
+
+        /**
+         * Constructs a new FetchStockDailyResponse.
+         * @memberof stock
+         * @classdesc Represents a FetchStockDailyResponse.
+         * @implements IFetchStockDailyResponse
+         * @constructor
+         * @param {stock.IFetchStockDailyResponse=} [properties] Properties to set
+         */
+        function FetchStockDailyResponse(properties) {
+            this.dailys = [];
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * FetchStockDailyResponse error.
+         * @member {common.Error} error
+         * @memberof stock.FetchStockDailyResponse
+         * @instance
+         */
+        FetchStockDailyResponse.prototype.error = 0;
+
+        /**
+         * FetchStockDailyResponse dailys.
+         * @member {Array.<common.IStockDaily>} dailys
+         * @memberof stock.FetchStockDailyResponse
+         * @instance
+         */
+        FetchStockDailyResponse.prototype.dailys = $util.emptyArray;
+
+        /**
+         * Creates a new FetchStockDailyResponse instance using the specified properties.
+         * @function create
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {stock.IFetchStockDailyResponse=} [properties] Properties to set
+         * @returns {stock.FetchStockDailyResponse} FetchStockDailyResponse instance
+         */
+        FetchStockDailyResponse.create = function create(properties) {
+            return new FetchStockDailyResponse(properties);
+        };
+
+        /**
+         * Encodes the specified FetchStockDailyResponse message. Does not implicitly {@link stock.FetchStockDailyResponse.verify|verify} messages.
+         * @function encode
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {stock.IFetchStockDailyResponse} message FetchStockDailyResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchStockDailyResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.error != null && message.hasOwnProperty("error"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.error);
+            if (message.dailys != null && message.dailys.length)
+                for (let i = 0; i < message.dailys.length; ++i)
+                    $root.common.StockDaily.encode(message.dailys[i], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FetchStockDailyResponse message, length delimited. Does not implicitly {@link stock.FetchStockDailyResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {stock.IFetchStockDailyResponse} message FetchStockDailyResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchStockDailyResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a FetchStockDailyResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {stock.FetchStockDailyResponse} FetchStockDailyResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchStockDailyResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.stock.FetchStockDailyResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.error = reader.int32();
+                    break;
+                case 2:
+                    if (!(message.dailys && message.dailys.length))
+                        message.dailys = [];
+                    message.dailys.push($root.common.StockDaily.decode(reader, reader.uint32()));
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a FetchStockDailyResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {stock.FetchStockDailyResponse} FetchStockDailyResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchStockDailyResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a FetchStockDailyResponse message.
+         * @function verify
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FetchStockDailyResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.error != null && message.hasOwnProperty("error"))
+                switch (message.error) {
+                default:
+                    return "error: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.dailys != null && message.hasOwnProperty("dailys")) {
+                if (!Array.isArray(message.dailys))
+                    return "dailys: array expected";
+                for (let i = 0; i < message.dailys.length; ++i) {
+                    let error = $root.common.StockDaily.verify(message.dailys[i]);
+                    if (error)
+                        return "dailys." + error;
+                }
+            }
+            return null;
+        };
+
+        /**
+         * Creates a FetchStockDailyResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {stock.FetchStockDailyResponse} FetchStockDailyResponse
+         */
+        FetchStockDailyResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.stock.FetchStockDailyResponse)
+                return object;
+            let message = new $root.stock.FetchStockDailyResponse();
+            switch (object.error) {
+            case "NO_ERROR":
+            case 0:
+                message.error = 0;
+                break;
+            case "UNKNOWN_ERROR":
+            case 1:
+                message.error = 1;
+                break;
+            case "INTERNAL_ERROR":
+            case 2:
+                message.error = 2;
+                break;
+            case "INVALID_USERNAME_OR_PASSWORD":
+            case 3:
+                message.error = 3;
+                break;
+            }
+            if (object.dailys) {
+                if (!Array.isArray(object.dailys))
+                    throw TypeError(".stock.FetchStockDailyResponse.dailys: array expected");
+                message.dailys = [];
+                for (let i = 0; i < object.dailys.length; ++i) {
+                    if (typeof object.dailys[i] !== "object")
+                        throw TypeError(".stock.FetchStockDailyResponse.dailys: object expected");
+                    message.dailys[i] = $root.common.StockDaily.fromObject(object.dailys[i]);
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a FetchStockDailyResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof stock.FetchStockDailyResponse
+         * @static
+         * @param {stock.FetchStockDailyResponse} message FetchStockDailyResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FetchStockDailyResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.arrays || options.defaults)
+                object.dailys = [];
+            if (options.defaults)
+                object.error = options.enums === String ? "NO_ERROR" : 0;
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = options.enums === String ? $root.common.Error[message.error] : message.error;
+            if (message.dailys && message.dailys.length) {
+                object.dailys = [];
+                for (let j = 0; j < message.dailys.length; ++j)
+                    object.dailys[j] = $root.common.StockDaily.toObject(message.dailys[j], options);
+            }
+            return object;
+        };
+
+        /**
+         * Converts this FetchStockDailyResponse to JSON.
+         * @function toJSON
+         * @memberof stock.FetchStockDailyResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FetchStockDailyResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return FetchStockDailyResponse;
+    })();
+
+    return stock;
+})();
+
 export const common = $root.common = (() => {
 
     /**

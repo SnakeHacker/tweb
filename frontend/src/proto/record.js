@@ -7,6 +7,433 @@ const $Reader = $protobuf.Reader, $Writer = $protobuf.Writer, $util = $protobuf.
 // Exported root namespace
 const $root = $protobuf.roots["default"] || ($protobuf.roots["default"] = {});
 
+export const record = $root.record = (() => {
+
+    /**
+     * Namespace record.
+     * @exports record
+     * @namespace
+     */
+    const record = {};
+
+    record.FetchRecordRequest = (function() {
+
+        /**
+         * Properties of a FetchRecordRequest.
+         * @memberof record
+         * @interface IFetchRecordRequest
+         */
+
+        /**
+         * Constructs a new FetchRecordRequest.
+         * @memberof record
+         * @classdesc Represents a FetchRecordRequest.
+         * @implements IFetchRecordRequest
+         * @constructor
+         * @param {record.IFetchRecordRequest=} [properties] Properties to set
+         */
+        function FetchRecordRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new FetchRecordRequest instance using the specified properties.
+         * @function create
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {record.IFetchRecordRequest=} [properties] Properties to set
+         * @returns {record.FetchRecordRequest} FetchRecordRequest instance
+         */
+        FetchRecordRequest.create = function create(properties) {
+            return new FetchRecordRequest(properties);
+        };
+
+        /**
+         * Encodes the specified FetchRecordRequest message. Does not implicitly {@link record.FetchRecordRequest.verify|verify} messages.
+         * @function encode
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {record.IFetchRecordRequest} message FetchRecordRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchRecordRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FetchRecordRequest message, length delimited. Does not implicitly {@link record.FetchRecordRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {record.IFetchRecordRequest} message FetchRecordRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchRecordRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a FetchRecordRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {record.FetchRecordRequest} FetchRecordRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchRecordRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.record.FetchRecordRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a FetchRecordRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {record.FetchRecordRequest} FetchRecordRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchRecordRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a FetchRecordRequest message.
+         * @function verify
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FetchRecordRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates a FetchRecordRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {record.FetchRecordRequest} FetchRecordRequest
+         */
+        FetchRecordRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.record.FetchRecordRequest)
+                return object;
+            return new $root.record.FetchRecordRequest();
+        };
+
+        /**
+         * Creates a plain object from a FetchRecordRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof record.FetchRecordRequest
+         * @static
+         * @param {record.FetchRecordRequest} message FetchRecordRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FetchRecordRequest.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this FetchRecordRequest to JSON.
+         * @function toJSON
+         * @memberof record.FetchRecordRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FetchRecordRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return FetchRecordRequest;
+    })();
+
+    record.FetchRecordResponse = (function() {
+
+        /**
+         * Properties of a FetchRecordResponse.
+         * @memberof record
+         * @interface IFetchRecordResponse
+         * @property {common.Error|null} [error] FetchRecordResponse error
+         * @property {string|null} [code] FetchRecordResponse code
+         * @property {string|null} [url] FetchRecordResponse url
+         */
+
+        /**
+         * Constructs a new FetchRecordResponse.
+         * @memberof record
+         * @classdesc Represents a FetchRecordResponse.
+         * @implements IFetchRecordResponse
+         * @constructor
+         * @param {record.IFetchRecordResponse=} [properties] Properties to set
+         */
+        function FetchRecordResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * FetchRecordResponse error.
+         * @member {common.Error} error
+         * @memberof record.FetchRecordResponse
+         * @instance
+         */
+        FetchRecordResponse.prototype.error = 0;
+
+        /**
+         * FetchRecordResponse code.
+         * @member {string} code
+         * @memberof record.FetchRecordResponse
+         * @instance
+         */
+        FetchRecordResponse.prototype.code = "";
+
+        /**
+         * FetchRecordResponse url.
+         * @member {string} url
+         * @memberof record.FetchRecordResponse
+         * @instance
+         */
+        FetchRecordResponse.prototype.url = "";
+
+        /**
+         * Creates a new FetchRecordResponse instance using the specified properties.
+         * @function create
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {record.IFetchRecordResponse=} [properties] Properties to set
+         * @returns {record.FetchRecordResponse} FetchRecordResponse instance
+         */
+        FetchRecordResponse.create = function create(properties) {
+            return new FetchRecordResponse(properties);
+        };
+
+        /**
+         * Encodes the specified FetchRecordResponse message. Does not implicitly {@link record.FetchRecordResponse.verify|verify} messages.
+         * @function encode
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {record.IFetchRecordResponse} message FetchRecordResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchRecordResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.error != null && message.hasOwnProperty("error"))
+                writer.uint32(/* id 1, wireType 0 =*/8).int32(message.error);
+            if (message.code != null && message.hasOwnProperty("code"))
+                writer.uint32(/* id 2, wireType 2 =*/18).string(message.code);
+            if (message.url != null && message.hasOwnProperty("url"))
+                writer.uint32(/* id 3, wireType 2 =*/26).string(message.url);
+            return writer;
+        };
+
+        /**
+         * Encodes the specified FetchRecordResponse message, length delimited. Does not implicitly {@link record.FetchRecordResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {record.IFetchRecordResponse} message FetchRecordResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        FetchRecordResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes a FetchRecordResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {record.FetchRecordResponse} FetchRecordResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchRecordResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.record.FetchRecordResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1:
+                    message.error = reader.int32();
+                    break;
+                case 2:
+                    message.code = reader.string();
+                    break;
+                case 3:
+                    message.url = reader.string();
+                    break;
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes a FetchRecordResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {record.FetchRecordResponse} FetchRecordResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        FetchRecordResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies a FetchRecordResponse message.
+         * @function verify
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        FetchRecordResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.error != null && message.hasOwnProperty("error"))
+                switch (message.error) {
+                default:
+                    return "error: enum value expected";
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    break;
+                }
+            if (message.code != null && message.hasOwnProperty("code"))
+                if (!$util.isString(message.code))
+                    return "code: string expected";
+            if (message.url != null && message.hasOwnProperty("url"))
+                if (!$util.isString(message.url))
+                    return "url: string expected";
+            return null;
+        };
+
+        /**
+         * Creates a FetchRecordResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {record.FetchRecordResponse} FetchRecordResponse
+         */
+        FetchRecordResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.record.FetchRecordResponse)
+                return object;
+            let message = new $root.record.FetchRecordResponse();
+            switch (object.error) {
+            case "NO_ERROR":
+            case 0:
+                message.error = 0;
+                break;
+            case "UNKNOWN_ERROR":
+            case 1:
+                message.error = 1;
+                break;
+            case "INTERNAL_ERROR":
+            case 2:
+                message.error = 2;
+                break;
+            case "INVALID_USERNAME_OR_PASSWORD":
+            case 3:
+                message.error = 3;
+                break;
+            }
+            if (object.code != null)
+                message.code = String(object.code);
+            if (object.url != null)
+                message.url = String(object.url);
+            return message;
+        };
+
+        /**
+         * Creates a plain object from a FetchRecordResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof record.FetchRecordResponse
+         * @static
+         * @param {record.FetchRecordResponse} message FetchRecordResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        FetchRecordResponse.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.error = options.enums === String ? "NO_ERROR" : 0;
+                object.code = "";
+                object.url = "";
+            }
+            if (message.error != null && message.hasOwnProperty("error"))
+                object.error = options.enums === String ? $root.common.Error[message.error] : message.error;
+            if (message.code != null && message.hasOwnProperty("code"))
+                object.code = message.code;
+            if (message.url != null && message.hasOwnProperty("url"))
+                object.url = message.url;
+            return object;
+        };
+
+        /**
+         * Converts this FetchRecordResponse to JSON.
+         * @function toJSON
+         * @memberof record.FetchRecordResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        FetchRecordResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        return FetchRecordResponse;
+    })();
+
+    return record;
+})();
+
 export const common = $root.common = (() => {
 
     /**

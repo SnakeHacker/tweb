@@ -12,6 +12,7 @@ const (
 	errDB               = "db_error"
 	errLogin            = "login_error"
 	errAccount          = "account_error"
+	errTushare          = "tushare_error"
 )
 
 var (
@@ -29,6 +30,12 @@ var (
 
 	// Account error
 	ErrorEmptyAccountUsernameOrPassowrd = makeError(errAccount, "username or password is empty")
+
+	// Tushare error
+	ErrTushareURL            = makeError(errTushare, "url is empty.")
+	ErrTushareToken          = makeError(errTushare, "token is empty.")
+	ErrTushareCodeEmpty      = makeError(errTushare, "code is empty.")
+	ErrTushareStockFieldsLen = makeError(errTushare, "length of stock fields is not equal to headers.")
 )
 
 func makeError(scope errScope, msg ...string) error {

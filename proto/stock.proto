@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package stock;
+
+option go_package = "github.com/SnakeHacker/tweb/server/proto";
+
+// Stock
+
+message FetchStockDailyRequest {
+    string code = 1;
+    int64 start = 2;
+    int64 end = 3;
+}
+
+message FetchStockDailyResponse {
+    common.Error error = 1;
+    repeated common.StockDaily dailys = 2;
+}

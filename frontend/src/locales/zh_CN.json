@@ -1,5 +1,5 @@
 {
-    "tweb": "Tweb, 你的交易助手",
+    "tweb": "Tweb",
     "hello": "您好: ",
     "username": "用户名",
     "password": "密码",
@@ -30,5 +30,8 @@
     "wrongUsernameOrPassword": "用户名或密码不正确",
     "successCreateAccount": "账户创建成功",
     "updateSuccess": "更新成功",
-    "deleteAccountConfirm": "确定删除账户？"
+    "deleteAccountConfirm": "确定删除账户？",
+    "inputTsCode": "输入股票代码",
+    "dateRangeIsEmpty": "请选择日期范围",
+    "tsCodeIsEmpty": "请输入股票代码"
 }

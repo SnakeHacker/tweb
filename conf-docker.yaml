@@ -25,3 +25,6 @@ create_admin: true
 admin:
     username: admin
     password: admin
+record:
+    code: ${YOUR_RECORD_CODE}
+    url: ${YOUR_RECORD_URL}

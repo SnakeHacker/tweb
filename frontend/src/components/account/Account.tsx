@@ -9,8 +9,7 @@ import { common } from 'proto/common';
 import store from 'store';
 import intl from 'react-intl-universal';
 
-
-import "./account.less"
+import "./account.less";
 
 const { confirm } = Modal;
 

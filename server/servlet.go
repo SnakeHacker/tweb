@@ -11,6 +11,7 @@ import (
 	"github.com/NYTimes/gziphandler"
 	"github.com/SnakeHacker/tweb/common/utils/web"
 	m "github.com/SnakeHacker/tweb/server/model"
+	"github.com/SnakeHacker/tweb/tushare"
 	packr "github.com/gobuffalo/packr/v2"
 	"github.com/golang/glog"
 	"github.com/gorilla/mux"
@@ -26,6 +27,7 @@ type Server struct {
 	Frontend    *packr.Box
 	Conf        Conf
 	DB          *gorm.DB
+	TuShare     *tushare.TuShare
 }
 
 // New ...
@@ -65,6 +67,13 @@ func New(conf Conf, frontend *packr.Box) (s *Server, err error) {
 		}
 	}
 
+	// Init tushare client
+	s.TuShare, err = tushare.New()
+	if err != nil {
+		glog.Error(err)
+		return
+	}
+
 	// setup router
 	s.setupRouter()
 
@@ -82,6 +91,7 @@ func (s *Server) setupRouter() {
 	// APIs not requiring auth
 	s.handlePing(root)
 	s.handleSessionPublic(root)
+	s.handleConf(root)
 
 	// APIs requiring auth
 	authedRouter := root.NewRoute().Subrouter()
@@ -89,6 +99,7 @@ func (s *Server) setupRouter() {
 
 	s.handleSession(authedRouter)
 	s.handleAccount(authedRouter)
+	s.handleStock(authedRouter)
 
 	// public
 	root.PathPrefix(publicURLPrefix).Handler(gziphandler.GzipHandler(http.StripPrefix(publicURLPrefix, http.FileServer(http.Dir(s.Conf.StorageDir)))))

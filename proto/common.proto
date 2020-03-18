@@ -22,3 +22,17 @@ message User {
     UserRole role = 2;
     string nickname = 3;
 }
+
+message StockDaily {
+    string ts_code = 1;
+    string trade_date = 2;
+    double open = 3;
+    double high = 4;
+    double low = 5;
+    double close = 6;
+    double pre_close = 7;
+    double change = 8;
+    double pct_chg = 9;
+    double vol = 10;
+    double amount = 11;
+}

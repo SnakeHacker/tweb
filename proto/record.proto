@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+import "common.proto";
+
+package record;
+
+option go_package = "github.com/SnakeHacker/tweb/server/proto";
+
+// record
+
+message FetchRecordRequest {
+}
+
+message FetchRecordResponse {
+    common.Error error = 1;
+    string code = 2;
+    string url = 3;
+}
