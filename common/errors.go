@@ -13,6 +13,7 @@ const (
 	errLogin            = "login_error"
 	errAccount          = "account_error"
 	errTushare          = "tushare_error"
+	errMinio            = "minio_error"
 )
 
 var (
@@ -39,6 +40,11 @@ var (
 	ErrTushareDailyParamsEmpty           = makeError(errTushare, "daily params is empty.")
 	ErrTushareDailyFieldsUnknown         = makeError(errTushare, "unknown daily field.")
 	ErrTushareConceptDetailFieldsUnknown = makeError(errTushare, "unknown concept detail field.")
+
+	// Minio error
+	ErrMinioAccessKeyEmpty = makeError(errMinio, "access_key is empty")
+	ErrMinioSecretKeyEmpty = makeError(errMinio, "secret_key is empty")
+	ErrMinioEndPointEmpty  = makeError(errMinio, "endpoint is empty")
 )
 
 func makeError(scope errScope, msg ...string) error {

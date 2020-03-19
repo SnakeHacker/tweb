@@ -16,6 +16,7 @@ import (
 	"github.com/golang/glog"
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
+	"github.com/minio/minio-go/v6"
 	"github.com/rs/cors"
 )
 
@@ -28,6 +29,7 @@ type Server struct {
 	Conf        Conf
 	DB          *gorm.DB
 	TuShare     *tushare.TuShare
+	Minio       *minio.Client
 }
 
 // New ...
@@ -74,6 +76,12 @@ func New(conf Conf, frontend *packr.Box) (s *Server, err error) {
 		return
 	}
 
+	s.Minio, err = NewMinioClient(s.Conf.Minio)
+	if err != nil {
+		glog.Error(err)
+		return
+	}
+
 	// setup router
 	s.setupRouter()
 
@@ -100,6 +108,7 @@ func (s *Server) setupRouter() {
 	s.handleSession(authedRouter)
 	s.handleAccount(authedRouter)
 	s.handleStock(authedRouter)
+	s.handleModel(authedRouter)
 
 	// public
 	root.PathPrefix(publicURLPrefix).Handler(gziphandler.GzipHandler(http.StripPrefix(publicURLPrefix, http.FileServer(http.Dir(s.Conf.StorageDir)))))

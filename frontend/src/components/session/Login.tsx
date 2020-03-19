@@ -50,7 +50,7 @@ class LoginPage extends BaseComponent<{}, State> {
                 <Title className="title" style={{marginBottom: '64px'}}>{intl.get('tweb')}</Title>
                 <LoginForm />
                 <div className="footer">
-                    <a href={recordURL}>{recordCode}</a>
+                    <a href={recordURL} target="_blank">{recordCode}</a>
                 </div>
             </div>
         )

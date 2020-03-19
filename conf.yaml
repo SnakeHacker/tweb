@@ -27,5 +27,10 @@ admin:
     password: admin
 # 备案信息
 record:
-    code: ${YOUR_RECORD_CODE}
-    url: ${YOUR_RECORD_URL}
+    code: ${RECORD_CODE}
+    url: ${RECORD_URL}
+minio:
+    access_key: AKIAIOSFODNN7EXAMPLE
+    secret_key: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    endpoint: localhost:9000
+    secure: false

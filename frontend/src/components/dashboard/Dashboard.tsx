@@ -4,6 +4,7 @@ import BaseComponent from 'components/Base';
 import StockViewer from 'components/stock/Stock';
 import { FetchStockDaily } from 'client/stock';
 import {stock} from 'proto/stock';
+import moment from 'moment';
 import intl from 'react-intl-universal';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 
@@ -14,28 +15,29 @@ const { Search } = Input;
 
 interface State{
     tsCode: string;
-    startDate: number;
-    endDate: number;
+    startDate: moment.Moment;
+    endDate: moment.Moment;
     dailys: number[][];
 }
 
 class Dashboard extends BaseComponent<{}, State> {
     state: Readonly<State> = {
         tsCode: "000001.SZ",
-        startDate: 0,
-        endDate: 0,
+        startDate: moment().subtract('days',30),
+        endDate:  moment(),
         dailys: [],
     };
 
     componentDidMount (){
+        this.fetchStockDaily(this.state.tsCode);
     }
 
     fetchStockDaily = async (tsCode: string) => {
         const {startDate, endDate} = this.state;
         const req = stock.FetchStockDailyRequest.create({
             code: tsCode,
-            start: startDate,
-            end: endDate,
+            start: startDate.unix(),
+            end: endDate.unix(),
         });
         const resp = await FetchStockDaily(req);
 
@@ -64,13 +66,13 @@ class Dashboard extends BaseComponent<{}, State> {
     changeDate = (e: any) => {
         if (e){
             this.setState({
-                startDate: e[0].unix(),
-                endDate: e[1].unix(),
+                startDate: e[0],
+                endDate: e[1],
             })
         }else{
             this.setState({
-                startDate: 0,
-                endDate: 0,
+                startDate: moment(),
+                endDate: moment(),
             })
         }
     }
@@ -91,7 +93,7 @@ class Dashboard extends BaseComponent<{}, State> {
 
     checkParams = (tsCode: string) =>{
         const {startDate, endDate} = this.state;
-        if (startDate === 0 || endDate === 0){
+        if (startDate === moment() || endDate === moment()){
             message.error(intl.formatMessage({id:"dateRangeIsEmpty"}));
             return false
         }
@@ -112,6 +114,7 @@ class Dashboard extends BaseComponent<{}, State> {
                     <RangePicker
                         locale={locale}
                         format={'YYYY/MM/DD'}
+                        defaultValue={[startDate, endDate]}
                         onChange={this.changeDate}
                         style={{width: '300px', marginRight: '20px'}}
                     />
@@ -126,8 +129,6 @@ class Dashboard extends BaseComponent<{}, State> {
                 <StockViewer
                     tsCode={tsCode}
                     dailys={dailys}
-                    startDate={startDate}
-                    endDate={endDate}
                 />
             </div>
         )

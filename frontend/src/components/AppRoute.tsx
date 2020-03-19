@@ -1,6 +1,7 @@
 import Management from 'components/management/Management';
 import Dashboard from 'components/dashboard/Dashboard';
 import Account from 'components/account/Account';
+import ModelPage from 'components/model/ModelPage';
 
 const routes = [
     {
@@ -18,8 +19,11 @@ const routes = [
     {
       path: '/app/management/account',
       component: Account
+    },
+    {
+      path: '/app/management/model',
+      component: ModelPage
     }
-    
   ];
 
 export default routes;

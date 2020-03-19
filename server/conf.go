@@ -25,9 +25,10 @@ type Conf struct {
 		IdleTimeoutInSec  time.Duration `yaml:"idle_timeout_sec"`
 		ShutdownWaitInSec time.Duration `yaml:"shutdown_wait_sec"`
 	} `yaml:"web"`
-	CreateAdmin bool   `yaml:"create_admin"`
-	Admin       Admin  `yaml:"admin"`
-	Record      Record `yaml:"record"`
+	CreateAdmin bool      `yaml:"create_admin"`
+	Admin       Admin     `yaml:"admin"`
+	Record      Record    `yaml:"record"`
+	Minio       MinioConf `yaml:"minio"`
 }
 
 // Admin ...
@@ -61,6 +62,11 @@ func LoadConf(yamlPath string) (conf Conf, err error) {
 func (c *Conf) Validate() (err error) {
 	if err = c.DB.validate(); err != nil {
 		glog.Info(err)
+		return
+	}
+
+	if err = c.Minio.validate(); err != nil {
+		glog.Error(err)
 		return
 	}
 	return

@@ -6,8 +6,6 @@ import './stock.less'
 
 interface Props{
     tsCode: string
-    startDate: number
-    endDate: number
     dailys: any[][]
 }
 
@@ -32,6 +30,14 @@ class StockViewer extends BaseComponent<Props, State> {
 
         return {
             backgroundColor: 'black',
+            title: {
+                text: this.props.tsCode,
+                left: 0,
+                top: 20,
+                textStyle: {
+                    color: "white",
+                }
+            },
             legend: {
                 data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
                 inactiveColor: '#777',

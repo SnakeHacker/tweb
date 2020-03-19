@@ -22,7 +22,7 @@ interface State {
     visibleDeleteAccountModal: boolean;
     isAdmin: boolean;
 }
-// class Account extends React.Component<{}, {}> {
+
 class Account extends BaseComponent<{}, State> {
     state: Readonly<State> = {
         loading: false,

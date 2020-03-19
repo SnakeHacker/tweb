@@ -1,5 +1,8 @@
 # tweb
-程序化A股交易 WebUI
+程序化A股交易 WebUI  
+本项目迁移至[tradingAI/tweb](https://github.com/tradingAI/tweb),此repo不再维护。  
+This project migrated to [tradingAI/tweb](https://github.com/tradingAI/tweb), the repo is no longer maintained.
+
 
 # 环境
 - Golang 1.13.8
@@ -59,5 +62,3 @@ Tweb支持3种启动方式
 # 相关项目
 - [tbase](https://github.com/iminders/tbase)
 - [tgym](https://github.com/iminders/tgym)
-
-TODO (mickey)

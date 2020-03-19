@@ -12,6 +12,16 @@ services:
       - 5432:5432
     volumes:
       - /tmp/tweb_db/pgdata:/var/lib/postgresql/data
+  minio:
+    image: minio/minio:latest
+    ports:
+      - 9000:9000
+    environment:
+      MINIO_ACCESS_KEY: AKIAIOSFODNN7EXAMPLE
+      MINIO_SECRET_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+    volumes:
+      - /tmp/tweb/minio/data:/data
+    command: ["server", "/data"]
   tweb:
     image: mickeyzhoudocker/tweb:latest
     container_name: tweb_app

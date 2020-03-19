@@ -3,7 +3,7 @@
 CONF=$(shell pwd)/conf.yaml
 
 up:
-	docker-compose -f docker-compose.yml up -d grandet_db
+	docker-compose -f docker-compose.yml up -d grandet_db minio
 
 down:
 	docker-compose -f docker-compose.yml down
